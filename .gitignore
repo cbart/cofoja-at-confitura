@@ -1,0 +1,11 @@
+# Build artifacts
+/out
+/build
+
+# IntelliJ IDEA
+/*.iml
+/*.ipr
+/*.iws
+
+# Gradle
+/.gradle

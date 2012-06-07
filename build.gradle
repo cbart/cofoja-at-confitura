@@ -1,0 +1,38 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+repositories {
+  mavenCentral()
+}
+
+project.ext {
+  versions = [
+    junit: '4.10',
+    cofoja: '1.0-r139',
+  ]
+}
+
+def v = project.ext.versions
+
+dependencies {
+  compile files("lib/cofoja-${v.cofoja}.jar")
+  testCompile "junit:junit:${v.junit}"
+}
+
+compileJava {
+  doLast {
+    mkdir('build/contracts')
+    ant.javac(destdir: 'build/contracts') {
+      src(path: 'src/main/java')
+      compilerarg(value: '-classpath')
+      compilerarg(value: "lib/cofoja-${v.cofoja}.jar")
+      compilerarg(value: '-processor')
+      compilerarg(value: 'com.google.java.contract.core.apt.AnnotationProcessor')
+      compilerarg(value: '-proc:only')
+    }
+  }
+}
+
+test {
+  jvmArgs "-javaagent:lib/cofoja-${v.cofoja}.jar"
+}
