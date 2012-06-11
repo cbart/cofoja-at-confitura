@@ -6,31 +6,34 @@ repositories {
 }
 
 project.ext {
-  versions = [
+  v = [
     junit: '4.10',
     cofoja: '1.0-r139',
   ]
+
+  cofoja = files("lib/cofoja-${v.cofoja}.jar")
+
+  outputContractsDir = files('build/contracts') {
+    builtBy('compileContracts')
+  }
 }
 
-def v = project.ext.versions
-
 dependencies {
-  compile files("lib/cofoja-${v.cofoja}.jar")
-  testCompile "junit:junit:${v.junit}"
+  compile cofoja
+  testCompile "junit:junit:${v.junit}", outputContractsDir
 }
 
 compileJava {
-  doLast {
-    mkdir('build/contracts')
-    ant.javac(destdir: 'build/contracts') {
-      src(path: 'src/main/java')
-      compilerarg(value: '-classpath')
-      compilerarg(value: "lib/cofoja-${v.cofoja}.jar")
-      compilerarg(value: '-processor')
-      compilerarg(value: 'com.google.java.contract.core.apt.AnnotationProcessor')
-      compilerarg(value: '-proc:only')
-    }
-  }
+  options.compilerArgs = ['-proc:none']
+}
+
+task compileContracts(type: Compile) {
+  source = sourceSets.main.java.srcDirs
+  classpath = cofoja
+  destinationDir = outputContractsDir as File
+  options.compilerArgs = ['-classpath', "lib/cofoja-${v.cofoja}.jar",
+      '-processor', 'com.google.java.contract.core.apt.AnnotationProcessor',
+      '-proc:only']
 }
 
 test {
