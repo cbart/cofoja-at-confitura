@@ -1,6 +1,7 @@
-package pl.confitura.contracts;
+package pl.confitura.contracts.solver;
 
-import com.google.java.contract.Requires;
+import java.io.OutputStream;
+import java.io.PrintStream;
 
 /**
  * @author cbart@students.mimuw.edu.pl (Cezary Bartoszuk)
@@ -23,8 +24,8 @@ public class FirstOrderSolver {
     solution = -(b / a);
   }
 
-  public void printSolution() {
-    System.out.print(endLine("Solution of 0 = " + a + "x + " + b + " is " + solution));
+  public String getTextSolution() {
+    return endLine("Solution of 0 = " + a + "x + " + b + " is " + solution);
   }
 
   public static String endLine(final String line) {

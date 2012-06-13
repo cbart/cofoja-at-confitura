@@ -44,7 +44,7 @@ test {
 task yeti(type: JavaExec, dependsOn: [compileJava, compileContracts]) {
   main = 'yeti.Yeti'
   classpath = yeti + cofoja + outputContractsDir + files(sourceSets.main.output.classesDir)
-  args = ['-Java', '-testModules=pl.confitura.contracts.FirstOrderSolver', '-time=3s',
+  args = ['-Java', '-testModules=pl.confitura.contracts.solver.FirstOrderSolver', '-time=3s',
       '-branchCoverage', "-yetiPath=${sourceSets.main.output.classesDir}", '-cofoja']
   jvmArgs "-javaagent:lib/cofoja-${v.cofoja}.jar"
   print(commandLine)
