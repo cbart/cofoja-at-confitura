@@ -24,7 +24,7 @@ public class FibonacciTest {
     assertThat(fibonacci(2), equalTo(1));
   }
 
-  @Ignore @Test public void negativeFibonacciIndexIsNonsense() {
+  @Test public void negativeFibonacciIndexIsNonsense() {
     fibonacci(-1);
   }
 
