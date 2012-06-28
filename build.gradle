@@ -7,8 +7,10 @@ repositories {
 
 project.ext {
   v = [
+    joda: '2.1',
     junit: '4.10',
     cofoja: '1.0-r139',
+    guava: '12.0'
   ]
 
   cofoja = files("lib/cofoja-${v.cofoja}.jar")
@@ -20,7 +22,7 @@ project.ext {
 }
 
 dependencies {
-  compile cofoja
+  compile cofoja, "com.google.guava:guava:${v.guava}", "joda-time:joda-time:${v.joda}"
   testCompile "junit:junit:${v.junit}", outputContractsDir
 }
 
@@ -30,10 +32,9 @@ compileJava {
 
 task compileContracts(type: Compile) {
   source = sourceSets.main.java.srcDirs
-  classpath = cofoja
+  classpath = configurations.compile
   destinationDir = outputContractsDir as File
-  options.compilerArgs = ['-classpath', "lib/cofoja-${v.cofoja}.jar",
-      '-processor', 'com.google.java.contract.core.apt.AnnotationProcessor',
+  options.compilerArgs = ['-processor', 'com.google.java.contract.core.apt.AnnotationProcessor',
       '-proc:only']
 }
 
@@ -43,8 +44,8 @@ test {
 
 task yeti(type: JavaExec, dependsOn: [compileJava, compileContracts]) {
   main = 'yeti.Yeti'
-  classpath = yeti + cofoja + outputContractsDir + files(sourceSets.main.output.classesDir)
-  args = ['-Java', '-testModules=pl.confitura.contracts.solver.FirstOrderSolver', '-time=3s',
-      '-branchCoverage', "-yetiPath=${sourceSets.main.output.classesDir}", '-cofoja']
+  classpath = yeti + outputContractsDir + files(sourceSets.main.output.classesDir) + configurations.compile
+  args = ['-Java', '-testModules=pl.confitura.contracts.*', '-time=10s',
+      "-yetiPath=${sourceSets.main.output.classesDir}", '-cofoja']
   jvmArgs "-javaagent:lib/cofoja-${v.cofoja}.jar"
 }
