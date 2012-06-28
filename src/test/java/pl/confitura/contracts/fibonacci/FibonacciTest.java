@@ -10,7 +10,7 @@ import static org.junit.Assert.assertThat;
  * @author cbart@students.mimuw.edu.pl (Cezary Bartoszuk)
  */
 public class FibonacciTest {
-  final Fibonacci fibonacci = new RecursiveFibonacci();
+  final RecursiveFibonacci fibonacci = new RecursiveFibonacci();
 
   @Test public void zeroFibonacciNumberIsZero() {
     assertThat(fibonacci(0), equalTo(0));
@@ -24,6 +24,7 @@ public class FibonacciTest {
     assertThat(fibonacci(2), equalTo(1));
   }
 
+  @Ignore
   @Test public void negativeFibonacciIndexIsNonsense() {
     fibonacci(-1);
   }
