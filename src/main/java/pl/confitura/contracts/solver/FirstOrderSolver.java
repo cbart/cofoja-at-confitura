@@ -1,8 +1,5 @@
 package pl.confitura.contracts.solver;
 
-import java.io.OutputStream;
-import java.io.PrintStream;
-
 /**
  * @author cbart@students.mimuw.edu.pl (Cezary Bartoszuk)
  */
