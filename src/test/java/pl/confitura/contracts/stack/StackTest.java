@@ -1,5 +1,6 @@
 package pl.confitura.contracts.stack;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import pl.confitura.contracts.stack.linked.LinkedStack;
 
@@ -17,6 +18,7 @@ public class StackTest {
     assertThat(stack.pop(), is(42));
   }
 
+  @Ignore
   @Test public void breakPopContract() {
     stack.pop();
   }
