@@ -8,7 +8,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 /**
- * @author cbart@students.mimuw.edu.pl (Cezary Bartoszuk)
+ * @author cbr@touk.pl
  */
 public class StackTest {
   private final Stack<Integer> stack = new LinkedStack<Integer>();

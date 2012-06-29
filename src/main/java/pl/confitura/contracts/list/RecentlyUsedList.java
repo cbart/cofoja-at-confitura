@@ -5,7 +5,7 @@ import com.google.java.contract.Invariant;
 import com.google.java.contract.Requires;
 
 /**
- * @author cbart@students.mimuw.edu.pl (Cezary Bartoszuk)
+ * @author cbr@touk.pl
  */
 @Invariant({
     "isEmpty() == (0 == size())",
@@ -31,7 +31,8 @@ public interface RecentlyUsedList<T> {
 
   @Requires({
       "0 <= index",
-      "index < size()"
+      "index < size()",
+      "!isEmpty()"
   })
   @Ensures({
       "null != result",

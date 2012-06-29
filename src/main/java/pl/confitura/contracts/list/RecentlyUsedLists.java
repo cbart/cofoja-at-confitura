@@ -5,7 +5,7 @@ import com.google.java.contract.Ensures;
 import java.util.LinkedList;
 
 /**
- * @author cbart@students.mimuw.edu.pl (Cezary Bartoszuk)
+ * @author cbr@touk.pl
  */
 public class RecentlyUsedLists {
   private RecentlyUsedLists() {}

@@ -5,7 +5,7 @@ import com.google.java.contract.Invariant;
 import com.google.java.contract.Requires;
 
 /**
- * @author cbart@students.mimuw.edu.pl (Cezary Bartoszuk)
+ * @author cbr@touk.pl
  */
 @Invariant({
     "size() >= 0",

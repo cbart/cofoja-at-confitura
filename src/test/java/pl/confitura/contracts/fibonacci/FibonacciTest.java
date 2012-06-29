@@ -7,7 +7,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 
 /**
- * @author cbart@students.mimuw.edu.pl (Cezary Bartoszuk)
+ * @author cbr@touk.pl
  */
 public class FibonacciTest {
   final RecursiveFibonacci fibonacci = new RecursiveFibonacci();

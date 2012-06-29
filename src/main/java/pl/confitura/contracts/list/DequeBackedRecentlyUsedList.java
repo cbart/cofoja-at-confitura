@@ -5,9 +5,10 @@ import com.google.common.collect.Iterators;
 import java.util.Deque;
 
 /**
- * @author cbart@students.mimuw.edu.pl (Cezary Bartoszuk)
+ * @author cbr@touk.pl
  */
-public class DequeBackedRecentlyUsedList<T> implements RecentlyUsedList<T> {
+public class DequeBackedRecentlyUsedList<T>
+    implements RecentlyUsedList<T> {
   private final Deque<T> sequence;
 
   DequeBackedRecentlyUsedList(final Deque<T> sequence) {

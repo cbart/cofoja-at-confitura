@@ -3,7 +3,7 @@ package pl.confitura.contracts.stack.linked;
 import pl.confitura.contracts.stack.Stack;
 
 /**
- * @author cbart@students.mimuw.edu.pl (Cezary Bartoszuk)
+ * @author cbr@touk.pl
  */
 public final class LinkedStack<T> implements Stack<T> {
   private Cell<T> head = new Nil<T>();

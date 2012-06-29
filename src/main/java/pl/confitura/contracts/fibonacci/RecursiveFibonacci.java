@@ -3,7 +3,7 @@ package pl.confitura.contracts.fibonacci;
 import com.google.java.contract.Requires;
 
 /**
- * @author cbart@students.mimuw.edu.pl (Cezary Bartoszuk)
+ * @author cbr@touk.pl
  */
 public class RecursiveFibonacci {
   @Requires("n >= 0")

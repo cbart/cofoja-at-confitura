@@ -1,7 +1,7 @@
 package pl.confitura.contracts.solver;
 
 /**
- * @author cbart@students.mimuw.edu.pl (Cezary Bartoszuk)
+ * @author cbr@touk.pl
  */
 public class FirstOrderSolver {
   private final int a;
